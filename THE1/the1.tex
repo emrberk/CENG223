@@ -1,0 +1,495 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{float}
+
+\newcolumntype{C}{>$c<$}
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+%\usepackage{a4wide}
+\usepackage{epsfig}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm}
+\usepackage{bm}
+\usepackage{wasysym}
+%\usepackage{fullpage}
+%\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[hmargin=2cm,vmargin=3.0cm]{geometry}
+%\topmargin=0cm
+%\topmargin=-1.8cm
+%\addtolength{\textheight}{6.5cm}
+%\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-3cm}
+%\setlength{\oddsidemargin}{0.0cm}
+%\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{automata,positioning}
+
+\usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+\usepackage{logicproof}
+
+\lstdefinestyle{customtex}{
+    %backgroundcolor=\color{lbcolor},
+    tabsize=2,
+    language=TeX,
+    numbers=none,
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize,
+    aboveskip={0.0\baselineskip},
+    belowskip={0.0\baselineskip},
+    %
+    columns=flexible,
+    keepspaces=true,
+    fontadjust=true,
+    upquote=true,
+    %
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    %
+    %identifierstyle=\color[rgb]{0,0.2,0.8},
+    identifierstyle=\color[rgb]{0,0,0.5},
+    %identifierstyle=\color[rgb]{0.133,0.545,0.133},
+    %keywordstyle=\color[rgb]{0.8,0,0},
+    %keywordstyle=\color[rgb]{0.133,0.545,0.133},
+    keywordstyle=\color[rgb]{0,0,0.5},
+    %commentstyle=\color[rgb]{0.133,0.545,0.133},
+    commentstyle=\color[rgb]{0.545,0.545,0.545},
+    %stringstyle=\color[rgb]{0.827,0.627,0.133},
+    stringstyle=\color[rgb]{0.133,0.545,0.133},
+    %
+    literate={â}{{\^{a}}}1 {Â}{{\^{A}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1 {ı}{{\i}}1 {İ}{{\.{I}}}1   {ö}{{\"o}}1 {Ö}{{\"O}}1 {ş}{{\c{s}}}1 {Ş}{{\c{S}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {~}{$\sim$}{1}
+}
+
+\lstdefinestyle{output}{
+    %backgroundcolor=\color{lbcolor},
+    tabsize=2,
+    numbers=none,
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize,
+    aboveskip={0.0\baselineskip},
+    belowskip={0.0\baselineskip},
+    %
+    columns=flexible,
+    keepspaces=true,
+    fontadjust=true,
+    upquote=true,
+    %
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    %
+    %identifierstyle=\color[rgb]{0.44,0.12,0.1},
+    identifierstyle=\color[rgb]{0,0,0},
+    keywordstyle=\color[rgb]{0,0,0},
+    commentstyle=\color[rgb]{0,0,0},
+    stringstyle=\color[rgb]{0,0,0},
+    %
+    literate={â}{{\^{a}}}1 {Â}{{\^{A}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1 {ı}{{\i}}1 {İ}{{\.{I}}}1   {ö}{{\"o}}1 {Ö}{{\"O}}1 {ş}{{\c{s}}}1 {Ş}{{\c{S}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1
+}
+
+\lstset{style=customtex}
+
+
+\tikzset{%
+    terminal/.style={draw, rectangle,
+    				 align=center, 
+					 minimum height=1cm, 
+					 minimum width=2cm,
+					 fill=black!10,
+					 anchor=mid},
+    nonterminal/.style={draw, rectangle,
+    					align=left,
+					    minimum height=1cm, 
+						minimum width=2cm, 
+						anchor=mid},% and so on
+}
+
+%% Style for terminals
+%\tikzstyle{terminal}=[draw, rectangle, 
+%					  minimum height=1cm, 
+%					  minimum width=2cm, 
+%					  fill=black!20,
+%					  anchor=south west]
+%% Style for nonterminals
+%\tikzstyle{nonterminal}=[draw, rectangle, 
+%						 minimum height=1 cm, 
+%						 minimum width=2 cm, 
+%						 anchor=north east]
+
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+\newcommand{\kutu}[2]{\framebox[#1mm]{\rule[-2mm]{0mm}{#2mm}}}
+\newcommand{\gap}{ \\[1mm] }
+
+\newcommand{\Q}{\raisebox{1.7pt}{$\scriptstyle\bigcirc$}}
+\newcommand{\minus}{\scalebox{0.35}[1.0]{$-$}}
+
+\setlength{\fboxsep}{10pt}
+
+\tcbsetforeverylayer{enhanced jigsaw, breakable, arc=0mm, boxrule=1pt, boxsep=5pt, after=\vspace{1em}, colback=white, colframe=black}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength\parindent{0pt}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+%\renewcommand\arraystretch{1.2}
+
+\newenvironment{Tab}[1]
+  {\def\arraystretch{1}\tabular{#1}}
+  {\endtabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Discrete Computational Structures \\ Take Home Exam 1}
+\author{Emre Berk KAYA \\ 2380590} % write your name and id
+\date{} % do not write any date
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\HRule\\
+Middle East Technical University \hfill Department of Computer Engineering
+{\let\newpage\relax\maketitle}
+\HRule\\
+\vspace{0.1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Write your answers below the section tags
+\section*{Question 1 \hfill \normalfont{(7 pts)}}
+
+\tab \textbf{a)} Construct a truth table for the following compound proposition.
+\begin{equation*}
+    (q \rightarrow \neg p)\leftrightarrow (p \leftrightarrow \neg q)
+\end{equation*} 
+\hfill \small{(3.5/7 pts)} \\
+\begin{tcolorbox}
+\begin{center}
+    \begin{tabular}{||c|c|c|c|c|c|c||} 
+    
+    \hline
+    $p$ & $q$ & $\neg p$ & $\neg q$ & $(q \rightarrow \neg p)$ & $(p \leftrightarrow \neg q)$
+    & $(q \rightarrow \neg p)\leftrightarrow (p \leftrightarrow \neg q)$ \\ [2.0ex]
+    \hline
+    T & T & F & F & F & F & T \\ [0.2ex]
+    \hline
+    T & F & F & T & T & T & T \\ [0.2ex]
+    \hline 
+    F & T & T & F & T & T & T \\ [0.2ex]
+    \hline
+    F & F & T & T & T & F & F \\ [0.2ex]
+    \hline
+    
+    \end{tabular}
+    
+\end{center}
+\end{tcolorbox}
+
+\tab \textbf{b)} Show that whether the following conditional statement is a tautology by using a truth table.
+\begin{equation*}
+    [(p \vee q) \wedge (r \rightarrow p) \wedge (r \rightarrow q)] \rightarrow r
+\end{equation*}
+\hfill \small{(3.5/7 pts)}\\
+\begin{tcolorbox}
+\begin{center}
+    \begin{tabular}{||c|c|c|c|c|c|c|c||} 
+    
+    \hline
+    $p$ & $q$ & $r$ & $(p\lor q)$ & $(r \rightarrow p)$ & $(r \rightarrow q)$
+    & $(p\lor q) \land  (r \rightarrow p) \land (r \rightarrow q)$ & Full Equation \\ [2.0ex]
+    \hline
+    T & T & T & T & T & T & T & T \\ [0.2ex]
+    \hline
+    T & T & F & T & T & T & T & F \\ [0.2ex]
+    \hline 
+    T & F & T & T & T & F & F & T\\ [0.2ex]
+    \hline
+    T & F & F & T & T & T & T & F \\ [0.2ex]
+    \hline
+    F & T & T & T & F & T & F & T \\ [0.2ex]
+    \hline
+    F & T & F & T & T & T & T & F \\ [0.2ex]
+    \hline
+    F & F & T & F & F & F & F & T \\ [0.2ex]
+    \hline
+    F & F & F & F & T & T & F & T \\ [0.2ex]
+    \hline
+    \end{tabular}
+
+\end{center}
+
+\end{tcolorbox}
+
+\newpage
+\section*{Question 2 \hfill \normalfont{(8 pts)}}
+\tab Show that $(p \rightarrow q) \wedge (p \rightarrow r)$ and $(\neg q \vee \neg r)\rightarrow \neg p$ are logically equivalent. Use tables 6,7 and 8 given under the section "$\textit{Propositional Equivalences}$" in the course textbook and give the reference to the table and the law in each step.
+
+\begin{tcolorbox}
+\begin{align*}
+    (p\rightarrow q) \land (p \rightarrow r) & \equiv p \rightarrow (q \land r) & \textit{Table 7, Line 6} \\ 
+    &\equiv \neg (q \land r) \rightarrow \neg p &\textit{Table 7, Line 2} \\
+    &\equiv (\neg q \lor \neg r) \rightarrow \neg p &\textit{De Morgan's Law} 
+\vspace{1cm} % remove this after your answer
+\end{align*}
+\end{tcolorbox}
+
+\section*{Question 3 \hfill \normalfont{(30 pts, 2.5 pts each)}}
+\tab Let F(x, y) mean that x is the father of y; M(x, y) denotes x is the mother of y. Similarly,
+H(x, y), S(x, y), and B(x, y) say that x is the husband/sister/brother of y, respectively. You
+may also use constants to denote individuals, like Sam and Alex. You can use $\vee, \wedge, \rightarrow, \neg, \forall, \exists$ rules and quantifiers. However, you are not allowed
+to use any predicate symbols other than the above to translate the following sentences into
+predicate logic. $\exists$! and exclusive-or (XOR) quantifiers are forbidden:
+\begin{multicols}{2}
+\begin{enumerate}[label=\textbf{\arabic*})]
+\item Everybody has a mother.
+\item Everybody has a father and a mother.
+\item Whoever has a mother has a father.
+\item Sam is a grandfather.
+\item All fathers are parents.
+\item All husbands are spouses.
+\item No uncle is an aunt.
+\item All brothers are siblings.
+\item Nobody's grandmother is anybody's father.
+\item Alex is Ali's brother-in-law.
+\item Alex has at least two children.
+\item Everybody has at most one mother.
+\end{enumerate}
+\end{multicols}
+\begin{tcolorbox}
+ \begin{multicols}{2}
+
+    \begin{enumerate}[label=\textbf{\arabic*})]
+    
+    \item $ \forall y \exists x M(x,y)$
+    \item $ \forall y \exists x \exists z (M(x,y) \land F(z,y)) $
+    \item $ \forall y (\exists x M(x,y) \rightarrow \exists z F(z,y)) $
+    \item $ \exists x \exists y (F(Sam,x) \land (F(x,y) \lor M(x,y)) $
+    \item $ \forall x (\exists y F(x,y) \rightarrow \exists z(F(x,z) \lor M(x,z)))$
+    \item $ \forall x (\exists y H(x,y) \rightarrow \exists z (H(x,z) \lor H(z,x)))$
+    \item $\neg \exists x (\exists y \exists z(B(x,y) \land (M(y,z) \lor F(y,z))) \land \exists y \exists z (S(x,y) \land (M(y,z) \lor F(y,z)))) $
+    \item $ \forall x \forall y (B(x,y) \land B(y,x) \rightarrow \exists z((F(z,x)\land F(z,y)) \lor (M(z,x)\land M(z,y)))) $
+    \item $\neg \exists x \exists y \exists z \exists t ((M(y,z)\land(M(z,x)\lor F(z,x))) \land \exists t F(y,t)) $
+    \item $ \exists y \exists z ((S(y,Alex) \land B(z,Ali) \land H(z,y)) \lor (S(z,Ali) \land B(y,Alex) \land H(y,z))) $
+    \item $ \exists x \exists y ((x\neq y) \land F(Alex,x) \land F(Alex,y)) $
+    \item $ \forall x (\neg\exists y M(y,x) \lor \exists y \forall z (M(y,z) \rightarrow (x = z))) $
+    \end{enumerate}
+
+    \end{multicols}
+
+\end{tcolorbox}
+
+
+\newpage
+\section*{Question 4 \hfill \normalfont{(25 pts)}}
+\tab Prove the following claim by natural deduction. Use only the natural deduction rules $\vee$, $\wedge$, $\rightarrow$, $\neg$ introduction and elimination. If you attempt to make use of a lemma or equivalence, you need to prove it by natural deduction too.
+\begin{equation*}
+    \textbf{a)} \; p \rightarrow q, r \rightarrow s \vdash (p \vee r) \rightarrow (q \vee s)
+\end{equation*}
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+    \begin{logicproof}{2}
+    $p \rightarrow q$ &  premise  \\
+    $r \rightarrow s$ &  premise \\
+    \begin{subproof}
+    $p \lor r$ &  assumption \\ 
+    \begin{subproof}
+    p & assumption \\
+    q & $\rightarrow e$ \: 1,4 \\
+    $q \lor s$ & $\lor i$ \: 5
+    \end{subproof}
+    \begin{subproof}
+    r & assumption \\
+    s & $\rightarrow e$ \: 2,7 \\
+    $q \lor s$ & $\lor i$ \: 8
+    \end{subproof}
+    $q \lor s$ & $\lor e$ \: 3,4-6,7-9
+    \end{subproof}
+    $(p \lor r) \rightarrow (q \lor s)$ & $\rightarrow i$ \: 3-10 
+    \end{logicproof}
+
+
+\end{tcolorbox}
+\begin{equation*}
+     \textbf{b)} \;  (p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \wedge q) \rightarrow \neg r)
+\end{equation*}
+
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+
+    \begin{logicproof}{3}
+    \begin{subproof}
+    $p \rightarrow (r \rightarrow \neg q)$ & assumption \\
+    \begin{subproof}
+    p & assumption \\
+    $r \rightarrow \neg q$ & $\rightarrow e$ \: 1,2 \\
+    \begin{subproof}
+    q & assumption \\
+    $\neg r$ & MT 3,4
+    \end{subproof}
+    $q \rightarrow \neg r$ & $\rightarrow i$ \: 4,5
+    \end{subproof}
+    $p \rightarrow (q \rightarrow \neg r)$ & $\rightarrow i$ \: 2-6 \\
+    \begin{subproof}
+    $p \land q$ & assumption \\
+    p & $\land e$ \: 8 \\
+    q & $\land e$ \: 8 \\
+    $\neg r$ & $\rightarrow e$ \:10,7
+    \end{subproof}
+    $(p \land q) \rightarrow \neg r$ & $\rightarrow i$ \:8-11
+    \end{subproof}
+    $(p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \land q) \rightarrow \neg r)$ & $\rightarrow i$ \: 1-12
+    \end{logicproof}
+    \centering
+     \caption{Proof 1: $(p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \land q) \rightarrow \neg r)$}
+
+     \begin{logicproof}{2}
+     $p \rightarrow q$ & premise \\
+     $\neg q$ & premise \\
+     \begin{subproof}
+     p & assumption\\
+     q & $\rightarrow e$ \: 1,3 \\
+     $\bot$ & $\neg e$ \: 2,4
+     \end{subproof}
+     $\neg p$ & $\neg i$ \: 3-5
+     \end{logicproof}
+     \centering
+     \caption{Proof 2: Modus Tollens (referred as MT in Proof 1)}
+
+\end{tcolorbox}
+
+\section*{Question 5 \hfill \normalfont{(30 pts)}}
+\tab Prove the following claim by natural deduction. Use only the natural deduction rules $\vee$, $\wedge$, $\rightarrow$, $\neg$ introduction and elimination. If you attempt to make use of a lemma or equivalence, you need to prove it by natural deduction too.
+
+
+\begin{equation*}
+    \textbf{a)} \: \forall x P(x) \vee \forall x Q(x) \vdash \forall x (P(x) \vee Q(x))
+\end{equation*}
+
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+
+    \begin{logicproof}{3}
+    $\forall x P(x) \lor \forall x Q(x)$ & premise \\
+    
+
+    \begin{subproof}
+    $\forall x P(x)$ & assume \\
+    \begin{subproof}
+    $\alpha$ \: fresh \: name & \\
+    $P(\alpha)$ & $\forall e$ \: 3 \\
+    $P(\alpha) \lor Q(\alpha)$ & $\lor i$ \: 4 
+    \end{subproof}
+    $\forall x(P(x) \lor Q(x))$ & $\forall i$ \: 3-5 
+    \end{subproof}
+    \begin{subproof}
+    $\forall x Q(x)$ & assume \\
+    \begin{subproof}
+    $\alpha$ \: fresh \: name & \\
+    $Q(\alpha)$ & $\forall e$ \: 7 \\
+    $P(\alpha) \lor Q(\alpha)$ & $\lor i$ \: 8  
+    \end{subproof}
+    $\forall x(P(x) \lor Q(x))$ & $\forall i$ \: 7-9 
+    \end{subproof}
+    $\forall x(P(x) \lor Q(x))$ & $\lor e$ \: 1,2-6,7-11 
+    
+    
+    \end{logicproof}
+
+
+
+\end{tcolorbox}
+
+\begin{equation*}
+    \textbf{b)} \: \forall x P(x) \rightarrow S \vdash \exists x (P(x)\rightarrow S) \\
+\end{equation*}
+
+\hfill \small{(17.5/25 pts)}\\
+\begin{tcolorbox}
+
+\begin{logicproof}{4}
+$\forall x P(x) \rightarrow S$ & premise \\
+\begin{subproof}
+$\neg \exists x(P(x) \rightarrow S)$ & assumption \\
+\begin{subproof}
+$\alpha$ \: fresh \: name & \\
+\begin{subproof}
+$\neg P(\alpha)$ & assume \\
+\begin{subproof}
+$P(\alpha)$ & assume \\
+$\bot$ & $\neg e$ \: 4,5 \\
+S & $\bot e$ \: 6
+\end{subproof}
+$P(\alpha) \rightarrow S$ & $\rightarrow i$ \: 5-7\\
+$\exists x (P(x) \rightarrow S)$ & $\exists i$ \: 8 \\
+$\bot$ & $\rightarrow e$ \: 2,9
+\end{subproof}
+$\neg \neg P(\alpha)$ & $\neg i$ \: 4-10 \\
+$P(\alpha)$ & $\neg \neg e$ \: 11 
+\end{subproof}
+$\forall x P(x)$ & $\forall i$ \: 3-12 \\
+S & $\rightarrow e$ \: 1,13 \\
+\begin{subproof}
+$\beta$ \: fresh \: name & \\
+$P(\beta)$ & $\forall e$ \: 13 \\
+$\neg P(\beta) \lor S$ & $\lor i$ \: 14 \\
+$P(\beta) \rightarrow S$ & Rule \: 1 
+\end{subproof}
+$\exists x (P(x) \rightarrow S)$ & $\exists i$ \: 18 \\
+$\bot$ & $\neg e$ \: 2,19
+\end{subproof}
+$\neg \neg \exists x (P(x) \rightarrow S)$ & $\rightarrow i$ \: 2-19 \\
+$\exists x(P(x) \rightarrow S)$ & $\neg \neg e$ \: 20 
+\end{logicproof}
+
+\newline
+\begin{logicproof}{2}
+$\neg p \lor q$ & premise \\
+\begin{subproof}
+$\neg p$ & assumption \\
+\begin{subproof}
+p & assumption \\
+$\bot$ & $\neg e$ \: 2,3 \\
+q & $\bot e$ \: 4 
+\end{subproof}
+$p \rightarrow q$ & $\rightarrow i$ \: 3-5
+\end{subproof}
+\begin{subproof}
+q & premise \\
+\begin{subproof}
+p & assumption \\
+q & copy \: 7 
+\end{subproof}
+$p \rightarrow q$ & $\rightarrow i$ \: 8-9 
+\end{subproof}
+$p \rightarrow q$ & $\lor e$ \: 1,2-6,7-10
+\end{logicproof}
+\centering
+\caption{Proof for Rule 1}
+
+\end{tcolorbox}
+
+\end{document}

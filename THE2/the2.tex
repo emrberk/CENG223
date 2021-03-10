@@ -1,0 +1,189 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+\usepackage{setspace}
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name : Emre Berk Kaya \\
+Id Number :  2380590\\
+\doublespacing
+% Write your answers below the section tags
+\section*{Answer 1}
+\paragraph{a.}
+    \subparagraph{i.}
+    It is a topology since:
+    %all elements of subsets of $\tau_1$ are $\emptyset$ and $A$, hence:
+    \begin{itemize}
+        \item $\emptyset$ and $A$ is in $\tau_1$.
+        \item The union of $\emptyset$ and $A$ is $A$, which is in $\tau_1$.
+        \item The intersection of $\emptyset$ and $A$ is $\emptyset$, which is in $\tau_1$. 
+    \end{itemize}
+    
+    \subparagraph{ii.}
+    It is not a topology.\\
+    \-\hspace{32px} One violation: $\{a\} \cup \{b\} = \{a,b\}$ and $\{a,b\} \notin \tau_2$.
+    
+    \subparagraph{iii.}
+    It is a topology since:
+    \begin{itemize}
+    \item The union of a set and the empty set is the same as the original set by identity law. Hence, $\forall x \in \tau_3,\ x\cup \emptyset = x$.
+    \item The intersection of a set and the empty set is the empty set by domination law. Hence, $\forall x \in \tau_3, \ x \cap \emptyset = \emptyset$ and $\emptyset \in \tau_3$.
+    \item $\{a,b\},\{b\},\{b,c\},\{a,b,c\} \subseteq A$. Their intersections with $A$ are themselves, which are elements of $\tau_3$, and their union with $A$ is $A$, which is an element of $\tau_3$. This conclusion will be referred as Lemma 1 in the following items.
+    \item $\{a,b\},\{b\},\{b,c\} \subseteq \{a,b,c\}.$ Then it holds Lemma 1.
+    %Their intersections with $\{a,b,c\}$ are themselves, which are elements of $\tau_3$, and their union with $\{a,b,c\}$ is $\{a,b,c\}$, which is an element of $\tau_3$.
+    \item $\{b\} \subseteq \{a,b\}$ and  $\{b\} \subseteq \{b,c\}$. Then it holds Lemma 1. %$\{b\}\cup \{b,c\} = \{b,c\}$ and $\{b\} \cup \{a,b\} = \{a,b\}$.\\
+    %$\{b\} \subseteq  \{a,b\}$ and $\{b\} \subseteq \{a,b\}$. Then it holds Lemma 1.
+    \item $\{a,b\} \cap \{b,c\} = \{b\}$, $\{b\} \in \tau_3$.\\
+    $\{a,b\} \cup \{b,c\} = \{a,b,c\}$, $\{a,b,c\} \in \tau_3$
+    \end{itemize}
+\subparagraph{b.}
+    \subparagraph{i.}
+    It is a topology on A. Call this set $\tau$.
+    \begin{itemize}
+        \item If $A-U = \emptyset$, which is finite, then $U = A \in \tau$.\\
+        If $A-U=A$, then $U=\emptyset \in \tau$. Therefore the first condition is satisfied.
+        \item Let $X_i \in \tau, i \in I$\\
+        $A-(\bigcup_{i \in I}X_i) = \bigcap_{i \in I} (A-X_i)$.   By De Morgan's Law.\\
+        Since $A-X_i$ is finite for all $X_i \in \tau$, their intersection $\bigcap_{i \in I} (A-X_i)$ is also finite.\\
+        Hence, $A-(\bigcup_{i \in I}X_i)$ is finite. Then, $\bigcup_{i \in I}X_i \in \tau$.
+        \item Let $X_1, X_2, ... ,X_n \in \tau$.\\
+        $A-(\bigcap_{i=1}^n X_i) = \bigcup_{i=1}^n (A-X_i)$ By De Morgan's Law.\\
+        Since $A-X_i$ is finite for all $X_i \in \tau$, the union is also finite.\\
+        Hence, $A-(\bigcap_{i=1}^n X_i)$ is finite. Then $\bigcap_{i=1}^n X_i \in \tau$.
+    \end{itemize}  
+    
+    \subparagraph{ii.}
+    It is a topology on A. Call this set $\tau$ and $\tau = \{U | \ A-U \  is \ countable \ or \ A\}$. Note that the union and intersection of countable sets are also countable.
+    %The arbitrary union of $U$ will be denoted as $\bigcup U$.
+    \begin{itemize}
+        \item Choose $U = A$. Then, $A-U = \emptyset$.\\
+        Choose $U = \emptyset$. Then, $A-U = A$.\\
+        Hence; $\emptyset , A \in \tau$.
+        \item Suppose $U_x \in \tau$ and $\bigcup U_x$ is the arbitrary union of the elements of $\tau$. By De Morgan's Law, $A- \bigcup U_x = \bigcap (A-U_x)$. It is known that $A-U_x$ is $A$ or a countable set. Then it follows that $U_x$ is a countable set or $\emptyset$, which is also countable. Therefore, $\bigcup U_x$ is countable, hence is in $\tau$.
+        \item Let n be a natural number and $A-\bigcap_{i=1}^n U_x = \bigcup_{i=1}^n(A-U_x)$ by De Morgan's Law. $A-U_x$ is a countable set or $\emptyset$, which is countable. Then $U_x$ is also countable. It follows that $\bigcap_{i=1}^n U_x$ is countable, hence is in $\tau$.
+        %Then A - $\bigcup U_x = \bigcap (X-U_x)$, by De Morgan's Law. 
+    \end{itemize}
+    \subparagraph{ii.}
+    It is not a topology on A. Call this set $\tau$. One violation:\\
+    \-\hspace{33px} Suppose $A = \mathbb{R} $ and $U=A-\{1\}$, $U \in \tau$. $A-U = \{1\}$, but $\{1\} \notin \tau $. 
+    
+\section*{Answer 2}
+\paragraph{a.}
+    Suppose $(x_1, y_1),(x_2,y_2) \in A \times (0,1)$.\\
+    $f(x_1,y_1)=x_1+y_1$ and $f(x_2,y_2)=x_2+y_2$.\\
+    Assume $f(x_1,y_1) = f(x_2,y_2)$. Then $x_1+y_1 = x_2+y_2$, and $x_1-x_2 = y_2-y_1$.\\
+    Note that $y_2-y_1<1$, $\forall y_1 \forall y_2 \in (0,1)$.\\
+    If $x_1 \neq x_2$, $x_1-x_2 \geq 1$ and $x_1-x_2 \neq y_2-y_1$.\\
+    Then, $x_1 = x_2$, and hence f is injective.
+
+\paragraph{b.}
+    $0 \in [0,1)$. Assume that $\exists (x,y) \in A \times (0,1)$, $f(x,y) = 0$.\\
+    $\forall y \in (0,1)$, $y>0$, and $\forall x \in A$, $x\geq 0$.\\ So, $\forall (x,y) \in A \times (0,1)$, $x+y \neq 0$. \\
+    Hence, f is not surjective.
+\paragraph{c.}
+    $f(x) = (x,e^x)$ is an injective function from $[0,1)$ to $A \times (0,1)$. Also we have an injective function from $A \times (0,1)$ to $[0,1)$. Then by Schröder-Bernstein theorem, $[0,1)$ and $A \times (0,1)$ have the same cardinality.
+
+\section*{Answer 3}
+\paragraph{a.}
+    Let $A = \{f_1,f_2,...\}$ is the set of all functions from $\{0,1\} \ to \  \mathbb{Z^+}$. 
+    Let $i,j \in \mathbb{Z^+}$. For $f_i$ and $f_j$ to be different functions, $(f_i(0),f_i(1)) \neq (f_j(0),f_j(1))$. 
+    %$\forall f_a \forall f_b(f_a=f_b \Leftrightarrow a=b, \ a,b\in \mathbb{Z^+})$
+    Then for a function $f_i$, $(f_i(0),f_i(1))$ is a unique tuple in $\mathbb{Z^+}\times\mathbb{Z^+} $. So, $|A|=|\mathbb{Z^+}\times \mathbb{Z^+}|$.\\ 
+    %There is an injection $g$ between $\mathbb{Z^+}^2$ and $\mathbb{Z^+}$ such that $g(f_i(0),f_i(1)) = f_i$ and \\
+    %$(f_i(0),f_i(1)) \rightarrow f_i$. 
+    Let $g:\mathbb{Z^+}\times\mathbb{Z^+} \rightarrow \mathbb{Z^+}$, $g(a,b) = 2^a3^b$. Then if $g(m,n) = g(a,b)$, $2^m3^n = 2^a3^b \Leftrightarrow (m,n)=(a,b)$ as 2 and 3 are prime numbers. Then $g$ is an injection, therefore  $|\mathbb{Z^+}\times \mathbb{Z^+}| \leq |\mathbb{Z^+}|$. Hence, A is countable. 
+\paragraph{b.}
+    For every function $f_x:\{1,...,n\} \rightarrow \mathbb{Z^+}$, there exists a unique tuple of numbers of the form \\$(f_x(1), f_x(2),...,f_x(n))$. There exists a bijection $g:B \rightarrow \mathbb{Z^+}^n$ such that $g(f_x) = (f_x(1),...,f_x(n))$. Then $|B|\leq|{Z^+}|^n$. We proved that $|\mathbb{Z^+}|^2 \leq |\mathbb{Z^+}|$. We can continue expanding the dimension of the domain of $g$ by defining new functions $g_3(a,b,c)=2^a3^b5^c$, $g_4(a,b,c,d) = 2^a3^b5^c7^d$ and so son. This follows that $|\mathbb{Z^+}|^k \leq |\mathbb{Z^+}|,\ k \in \mathbb{Z^+}$.\\
+    Hence, $B$ is countable.
+    %Each element of these tuples equals to a positive integer. There 
+\paragraph{c.}
+    Note that $C$ is an infinite set.\\
+    Let $\beta : \mathbb{Z^+} \rightarrow C$ be a function. For each $x \in \mathbb{Z^+}$ there exists a function $f_x:\mathbb{Z^+} \rightarrow \mathbb{Z^+}$ and $\beta(x) = f_x$.\\
+    We can define another function $g:\mathbb{Z^+} \rightarrow \mathbb{Z^+}$, $g(x) = f_x(x)+2$. Since $g$ is from $\mathbb{Z^+}$ to $\mathbb{Z^+}$, $g \in C$.\\$\forall x \in \mathbb{Z^+}, g(x) \neq f_x(x)$. This implies that $f_x \neq g$ for all $x \in \mathbb{Z^+}$. Domain of $\beta$ does not contain the function $g$, then $\beta$ is not a bijection.\\
+    We can conclude that for every function $\beta$ from $\mathbb{Z^+}$ to $C$, we can find a function which is not in the domain of  $\beta$. We can not find a bijection from $\mathbb{Z^+}$ to $C$.\\
+    Hence, $C$ is not countable. 
+    
+    
+\paragraph{d.}
+    Suppose that we have functions $f_x:\mathbb{Z^+} \rightarrow \{0,1\}$, $x \in \mathbb{Z^+}$. By the definition, $\forall x, \ f_x \in D$.\\
+    We can represent the values of each $f_x$ with a binary string as each positive integer is mapped to 0 or 1. The rows are of the form $f_i: \ f_i(0)f_i(1)f_i(2)...$\\
+    $f_1: \ 100110100...$\\
+    $f_2: \ 110101000...$\\
+    and so on.\\
+    We can define a new function as follows:\\
+    $f_k:\mathbb{Z^+} \rightarrow \{0,1\}$\\
+    $f_k(i)=0$, if $f_i(i)=1$\\
+    $f_k(i)=1$, if $f_i(i)=0$ , $k,i \in \mathbb{Z^+}$.\\
+    Then for all $i \in \mathbb{Z^+}$, $f_i \in D$, $f_i(i) \neq f_k(i)$ and thus $f_k \neq f_i$.\\
+    Therefore $f_k \notin D$, and all functions from $\mathbb{Z^+}$ to $\{0,1\}$ can not be listed.\\
+    Hence D is not countable.
+
+\paragraph{e.}
+    Let $F_N = \{f:\mathbb{Z^+} \rightarrow \{0,1\}| \ f(i)=0, \ for \ all \ i>N\}$.\\
+    All $f$ in $F_N$ differs from the first N values. Then we have $2^N$ different functions in $F_N$. For all $N \in \mathbb{Z^+}$, we can form a new function $F_N \in E$, $N \in \mathbb{Z^+}$. Then the number of functions $F_N$ is countable and each $F_N$ is finite. E is their finite union.\\
+    Hence E is countable.
+    
+    
+    
+\section*{Answer 4}
+\paragraph{a.}
+    $\ln{n!} = \ln 1+\ln 2+...+\ln n$.\\
+    $= \sum_{k=1}^{n}\ln k $\\
+    $\approx \int_{1}^{n} \ln x \ dx$\\
+    $\approx n\ln n-n$ by Stirling's Approximation.\\
+    Then, $\ln{n!} \approx n \ln{n}-n$\\
+    $n! \approx e^{n\ln{n}-n}$\\
+    $n! \approx n^n -n$\\
+    $\Rightarrow \lim_{n\to\infty} |n!/(n^n-n)| \approx 1$
+    Therefore, we can conclude that $n!$ and $n^n-n$ are asymptotic.\\
+    This implies that $n!$ is $O(n^n-n) = O(n^n)$ and $n!$ is $\Omega(n^n-n) = \Omega(n^n)$.\\
+    Hence, $n!$ is $\Theta(n^n)$.
+    
+\paragraph{b.}
+    $(n+a)^b = \sum_{k=0}^{b}\binom{b}{k}n^{b-k}a^k =  \binom{b}{0}n^b+\binom{b}{1}n^{b-1}a +\binom{b}{2}n^{b-2}a^2+...+\binom{b}{b}a^b $\\
+    Take each $\binom{b}{k}a^k$ as $c_0, c_1, ...$.\\
+    Then we have $c_0n^b+c_1n^{b-1}+...+c_b$ and \\
+    $c_0n^b \leq c_0n^b+c_1n^{b-1}+...+c_b \leq  (c_0+c_1+...+c_b)n^b$.\\
+    Hence, we can conclude that $(n+a)^b$ is $\Theta(n^b)$
+    
+\section*{Answer 5}
+\paragraph{a.}
+    For all values of y,  $2^y \equiv 1\Mod{2^y-1}$.\\
+    Suppose that $x=ky+c$, $k,c \in \mathbb{R}$.\\
+    Then $2^x = 2^{ky+c} = 2^c(2^y)^k$.\\
+    $2^c(2^y)^k \equiv 2^c \Mod{2^y-1}$ as $2^y \equiv 1\Mod{2^y-1}$.\\
+    $2^x \equiv 2^c\Mod{2^y-1}$\\
+    $2^x \equiv 2^{x \bmod y}\Mod{2^y-1}.$\\
+    $(2^x -1) \equiv (2^{x \bmod y}-1) \Mod{2^y-1}$ \\
+    Therefore $(2^x -1) \bmod (2^y-1) = 2^{x \bmod y}-1$.
+    
+    
+\paragraph{b.}
+    Apply Euclidean Algorithm to find gcd:\\
+    $gcd(2^x-1,2^y-1) = gcd(2^y-1, (2^x-1 \bmod 2^y-1))$\\
+    $= gcd(2^y-1, 2^{x \bmod y}-1)$ by the Lemma found in 5a. \\
+    $= gcd(2^{x \bmod y}-1, 2^{y \bmod (x \bmod y)}-1)$.\\
+    ...\\
+    $= gcd(2^{...x\bmod (y \bmod(...))}-1,2^{gcd(x,y)}-1)$\\
+    $= gcd(2^{gcd(x,y)}-1,0) $\\
+    $= 2^{gcd(x,y)}-1$.
+
+\end{document}
